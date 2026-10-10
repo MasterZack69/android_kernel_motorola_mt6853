@@ -6,6 +6,9 @@ It vendors the kernel portion of tiann/KernelSU v0.9.5 at
 `b766b98513b5a7eb33bc1c4a76b5702bf1288f07`, release version 11872.
 Use the official matching **KernelSU v0.9.5 Manager**. This is an older
 non-GKI integration baseline, not a claim of current upstream support.
+Official KernelSU v3.3.0 is newer, but its Kconfig requires kprobes, and
+its archived non-GKI guide explicitly names v0.9.5 as the last supported
+release. This branch is not advertised as KernelSU 3.3.0.
 
 ## Hooks
 
@@ -26,6 +29,20 @@ and complete its userspace installation; an embedded standalone daemon
 is not provided by this source integration.
 
 ## Configuration and build
+
+For Motorola Edge 20 Fusion/Lite (`kyoto`), the standalone build helper uses
+`k6853v1_64_6360_k419_defconfig`, followed by the Motorola platform and
+Kyoto-specific fragments, then the KernelSU fragment. It preserves CFI/LTO.
+
+```sh
+# Put the desired Clang/LLVM toolchain's bin directory first in PATH.
+OUT="$PWD/out-kyoto-ksu" JOBS=2 bash scripts/build-kyoto-ksu.sh
+```
+
+This is the repository's vendor-config target build, not a full LineageOS
+ROM build. Any additional ROM-specific fragments/flags must be supplied
+for matching a particular installed ROM. See KERNELSU-VALIDATION.md for
+what was actually compiled.
 
 First use the **correct device/ROM defconfig and Motorola fragments**.
 Do not assume a generic MT6853 config is suitable for your phone.
