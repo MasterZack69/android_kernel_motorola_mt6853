@@ -1,0 +1,19 @@
+menu "KernelSU"
+
+config KSU
+	bool "KernelSU function support (manual hooks)"
+	depends on SECURITY && SECURITY_SELINUX && OVERLAY_FS && !KPROBES
+	default n
+	help
+	  Enable kernel-level root privileges on Android System.
+	  This tree uses built-in manual hooks. Kprobes must be disabled.
+	  Enable with kernel/configs/ksu.config after your device config.
+
+config KSU_DEBUG
+	bool "KernelSU debug mode"
+	depends on KSU
+	default n
+	help
+	  Enable KernelSU debug mode.
+
+endmenu

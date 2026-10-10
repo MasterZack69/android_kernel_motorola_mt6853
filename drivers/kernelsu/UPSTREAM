@@ -1,0 +1,9 @@
+Source: https://github.com/tiann/KernelSU
+Tag: v0.9.5
+Commit: b766b98513b5a7eb33bc1c4a76b5702bf1288f07
+KernelSU version: 11872
+
+Only kernel/ is vendored; retain upstream GPL-2.0 license.
+Local changes: built-in/manual-only Kconfig; fixed version without git/network
+access at build time; manual-hook startup log. Use matching v0.9.5 Manager.
+embed_ksud.c retains the upstream stub; Manager installs the userspace daemon.

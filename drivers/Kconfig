@@ -298,4 +298,6 @@ source "drivers/mmi_info/Kconfig"
 
 source "drivers/moto_f_usbnet/Kconfig"
 
+source "drivers/kernelsu/Kconfig"
+
 endmenu
