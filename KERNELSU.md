@@ -1,3 +1,7 @@
+> This branch additionally contains an experimental SUSFS v1.5.5 port.
+> Read SUSFS.md and SUSFS-VALIDATION.md. The historical KSU-only build
+> evidence and downloadable ZIP do not validate or contain this port.
+
 # KernelSU manual-hook integration
 
 This branch starts at lineage-22.2 commit
@@ -67,7 +71,7 @@ successful build. The repository's MTK build configuration references an
 Android Clang toolchain; device-image validation should use the matching
 ROM toolchain rather than assuming any host Clang release is equivalent.
 
-`path_umount` is not backported here; pre-5.9 KernelSU module-unmount
-functionality is therefore not available. Compilation alone cannot verify
+This SUSFS branch includes an explicit `path_umount` backport; the previous
+KSU-only branch did not. Runtime module-unmount behavior is not device-tested. Compilation alone cannot verify
 booting, Manager authorization, SELinux behavior, modules, or safe mode.
 No flashable boot image is claimed without a device-target build and test.

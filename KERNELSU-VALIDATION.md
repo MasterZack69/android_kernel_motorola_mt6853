@@ -1,3 +1,8 @@
+> **Historical KSU-only build report.** It predates this SUSFS port and
+> does not prove this branch builds or boots. See SUSFS-VALIDATION.md for
+> the current branch's limited validation. The old Image.gz checksum and
+> previous downloadable artifact apply to the earlier KSU-only source.
+
 # Kyoto full-build validation
 
 **PASS: complete standalone vendor-config kernel build.**

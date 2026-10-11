@@ -51,10 +51,15 @@ ifeq ($(shell grep -q "int path_umount" $(srctree)/fs/namespace.c; echo $$?),0)
 ccflags-y += -DKSU_UMOUNT
 else
 $(info -- Did you know you can backport path_umount to fs/namespace.c from 5.9?)
-$(info -- Read: https://kernelsu.org/guide/how-to-integrate-for-non-gki.html#how-to-backport-path-umount)
+$(error KernelSU requires the checked-in path_umount backport)
 endif
 
 ccflags-y += -Wno-implicit-function-declaration -Wno-strict-prototypes -Wno-int-conversion -Wno-gcc-compat
 ccflags-y += -Wno-declaration-after-statement -Wno-unused-function
 
 # Keep a new line here!! Because someone may append config
+
+# The SUSFS port uses checked-in compatibility code, never source rewriting.
+ifeq ($(CONFIG_KSU_SUSFS),y)
+$(info -- SUSFS: v1.5.5 (legacy kernel-4.19 manual-hook port))
+endif
