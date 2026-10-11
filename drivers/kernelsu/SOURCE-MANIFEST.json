@@ -1,0 +1,581 @@
+{
+  "upstream": "KernelSU-Next/KernelSU-Next",
+  "tag": "v3.4.0-legacy",
+  "commit": "8af3d4fec33be32fa5d3f8dae4f380fac45bf2cd",
+  "files": [
+    {
+      "path": ".clang-format",
+      "upstream_path": "kernel/.clang-format",
+      "upstream_sha256": "da17ae445853aaf70a1799c431baeb41d00aa2a66aad3618168b041ed29b6563",
+      "sha256": "da17ae445853aaf70a1799c431baeb41d00aa2a66aad3618168b041ed29b6563",
+      "modified": false
+    },
+    {
+      "path": "Kbuild",
+      "upstream_path": "kernel/Kbuild",
+      "upstream_sha256": "1e8c75b415878ae981b6f8373488a159b832a50234f8827a292e110dcd9bee7c",
+      "sha256": "a5a10111baf29e1d7da3180bf467bffc7c0c5f0915281f6dcccdeacf94890c08",
+      "modified": true
+    },
+    {
+      "path": "Kconfig",
+      "upstream_path": "kernel/Kconfig",
+      "upstream_sha256": "1712198b939aa9cdec0907ddf3e18647034b5361dd31f070f6c18acd3edd7b99",
+      "sha256": "149530610d802363667ae4bb54604f166ae0db0d1d0c91a5b08b6dac0668ac27",
+      "modified": true
+    },
+    {
+      "path": "LICENSE",
+      "upstream_path": "kernel/LICENSE",
+      "upstream_sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643",
+      "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643",
+      "modified": false
+    },
+    {
+      "path": "Makefile",
+      "upstream_path": "kernel/Makefile",
+      "upstream_sha256": "f6ee2349e4759ba7e4377c3691c5e028a9d05fda5dfad72e7e15a918fd9fdf17",
+      "sha256": "3d9846942744fa799de40530839382df2461a87e9d4a5d9d7fc181c987c51e7f",
+      "modified": true
+    },
+    {
+      "path": "compat/kernel_compat.c",
+      "upstream_path": "kernel/compat/kernel_compat.c",
+      "upstream_sha256": "d8c218376fd77dbd2d1a0f4220cece57f5d173f304fc77e3bd4030884ace7c26",
+      "sha256": "d8c218376fd77dbd2d1a0f4220cece57f5d173f304fc77e3bd4030884ace7c26",
+      "modified": false
+    },
+    {
+      "path": "compat/kernel_compat.h",
+      "upstream_path": "kernel/compat/kernel_compat.h",
+      "upstream_sha256": "dd97306d9703854e83cabe5d5d6f5821fbf8320273bfb7fa6e299c6663e9a5b0",
+      "sha256": "dd97306d9703854e83cabe5d5d6f5821fbf8320273bfb7fa6e299c6663e9a5b0",
+      "modified": false
+    },
+    {
+      "path": "core/init.c",
+      "upstream_path": "kernel/core/init.c",
+      "upstream_sha256": "744439154a0472b3b163deb473fede363a14f2ec8b25d68b3c4f420173d29214",
+      "sha256": "744439154a0472b3b163deb473fede363a14f2ec8b25d68b3c4f420173d29214",
+      "modified": false
+    },
+    {
+      "path": "extras.c",
+      "upstream_path": "kernel/extras.c",
+      "upstream_sha256": "10ca5315d4e184bf6149bdd19d45dd2cbee1453cadbba27ad5bac14299fef3ea",
+      "sha256": "10ca5315d4e184bf6149bdd19d45dd2cbee1453cadbba27ad5bac14299fef3ea",
+      "modified": false
+    },
+    {
+      "path": "feature/adb_root.c",
+      "upstream_path": "kernel/feature/adb_root.c",
+      "upstream_sha256": "48cb0112603ed30d7af87d23d11f75c001656c9c735ff71cb09c1db451100b78",
+      "sha256": "48cb0112603ed30d7af87d23d11f75c001656c9c735ff71cb09c1db451100b78",
+      "modified": false
+    },
+    {
+      "path": "feature/adb_root.h",
+      "upstream_path": "kernel/feature/adb_root.h",
+      "upstream_sha256": "e5f74445d25b9dd5bfaa6daa7126f7a0c9b1c31d2c64f03e36734de6e1248af2",
+      "sha256": "e5f74445d25b9dd5bfaa6daa7126f7a0c9b1c31d2c64f03e36734de6e1248af2",
+      "modified": false
+    },
+    {
+      "path": "feature/kernel_umount.c",
+      "upstream_path": "kernel/feature/kernel_umount.c",
+      "upstream_sha256": "0fb31e18c226212482331f31f5db748c3765b4d0bac9e35921df36902d26b816",
+      "sha256": "0fb31e18c226212482331f31f5db748c3765b4d0bac9e35921df36902d26b816",
+      "modified": false
+    },
+    {
+      "path": "feature/kernel_umount.h",
+      "upstream_path": "kernel/feature/kernel_umount.h",
+      "upstream_sha256": "7be5cf6a486fbbba325466e928a2d01feed30004bc361e465309fa2238367f6d",
+      "sha256": "7be5cf6a486fbbba325466e928a2d01feed30004bc361e465309fa2238367f6d",
+      "modified": false
+    },
+    {
+      "path": "feature/selinux_hide.c",
+      "upstream_path": "kernel/feature/selinux_hide.c",
+      "upstream_sha256": "18ef04986748e6f407074d259b6593851c037cbaff2bb459f4e403ea02627aaf",
+      "sha256": "deee72ebf31374aec028ce2de9400c2812610523e1302664d5a715a481548c47",
+      "modified": true
+    },
+    {
+      "path": "feature/selinux_hide.h",
+      "upstream_path": "kernel/feature/selinux_hide.h",
+      "upstream_sha256": "0faff8f6472686c7f271ae94cc276edb7fb8f6db8bdaee91ba13b0830e28948c",
+      "sha256": "0faff8f6472686c7f271ae94cc276edb7fb8f6db8bdaee91ba13b0830e28948c",
+      "modified": false
+    },
+    {
+      "path": "feature/sucompat.c",
+      "upstream_path": "kernel/feature/sucompat.c",
+      "upstream_sha256": "0b8e0eaee8c22e93880a3ad14734d3f4b78e96f111f2cdfa831367f15630385e",
+      "sha256": "5f31d01b7cc534d9cdd269261a42c097b64b58210e4312720c815063cb56b1a8",
+      "modified": true
+    },
+    {
+      "path": "feature/sucompat.h",
+      "upstream_path": "kernel/feature/sucompat.h",
+      "upstream_sha256": "b8d199fd22b27d1fadfacf226b704e528b3a22e911a6155e287c88cb6aa96299",
+      "sha256": "b8d199fd22b27d1fadfacf226b704e528b3a22e911a6155e287c88cb6aa96299",
+      "modified": false
+    },
+    {
+      "path": "feature/sulog.c",
+      "upstream_path": "kernel/feature/sulog.c",
+      "upstream_sha256": "deeed99ee23424c1429f3d9783c1f5aa17292089f44ffbcc4716bc098f32cfca",
+      "sha256": "deeed99ee23424c1429f3d9783c1f5aa17292089f44ffbcc4716bc098f32cfca",
+      "modified": false
+    },
+    {
+      "path": "feature/sulog.h",
+      "upstream_path": "kernel/feature/sulog.h",
+      "upstream_sha256": "23f735a1f970394e80cf461a2794fb0e59a879d0343b7d725eb8dfa32fa47ec0",
+      "sha256": "23f735a1f970394e80cf461a2794fb0e59a879d0343b7d725eb8dfa32fa47ec0",
+      "modified": false
+    },
+    {
+      "path": "hook/hook_manager.c",
+      "upstream_path": "kernel/hook/hook_manager.c",
+      "upstream_sha256": "0b86205ec949542c937cbce5b5af3c6d923d7a3a9fc6e245ed3ce03e7183d0f2",
+      "sha256": "0b86205ec949542c937cbce5b5af3c6d923d7a3a9fc6e245ed3ce03e7183d0f2",
+      "modified": false
+    },
+    {
+      "path": "hook/hook_manager.h",
+      "upstream_path": "kernel/hook/hook_manager.h",
+      "upstream_sha256": "dafda758cee0095de81ccb0465d9a649d5f3abee4845e1d6b8e3c745254df1cc",
+      "sha256": "dafda758cee0095de81ccb0465d9a649d5f3abee4845e1d6b8e3c745254df1cc",
+      "modified": false
+    },
+    {
+      "path": "hook/lsm_hooks.c",
+      "upstream_path": "kernel/hook/lsm_hooks.c",
+      "upstream_sha256": "cd45638098e9fbd5f1ab24d80439e948471ddfd4c7adbfc18bb0a9d9e30daf67",
+      "sha256": "cd45638098e9fbd5f1ab24d80439e948471ddfd4c7adbfc18bb0a9d9e30daf67",
+      "modified": false
+    },
+    {
+      "path": "hook/patch_memory.c",
+      "upstream_path": "kernel/hook/patch_memory.c",
+      "upstream_sha256": "f2357fb46f71f93e8cffb06e3cb1154688bcb7ae43857b06e28b2fde8539539a",
+      "sha256": "f2357fb46f71f93e8cffb06e3cb1154688bcb7ae43857b06e28b2fde8539539a",
+      "modified": false
+    },
+    {
+      "path": "hook/patch_memory.h",
+      "upstream_path": "kernel/hook/patch_memory.h",
+      "upstream_sha256": "79b8d8f9491b53e1330f99fbe12c0006faae79426ed1f5ede009c18b57e63c39",
+      "sha256": "79b8d8f9491b53e1330f99fbe12c0006faae79426ed1f5ede009c18b57e63c39",
+      "modified": false
+    },
+    {
+      "path": "hook/setuid_hook.c",
+      "upstream_path": "kernel/hook/setuid_hook.c",
+      "upstream_sha256": "e00be937f6001d1fcbb113ab6bd63394452f06eb13ec1873aebe1da1588e05e5",
+      "sha256": "f79597c403e9de8dd81ee119acfc3799a1d62b234ea40f7dec2b35f4e9b48cc8",
+      "modified": true
+    },
+    {
+      "path": "hook/setuid_hook.h",
+      "upstream_path": "kernel/hook/setuid_hook.h",
+      "upstream_sha256": "437b3333ae51e8eae0e7ef44652faf7a5cf7f744e4974409467c3879773e9f70",
+      "sha256": "437b3333ae51e8eae0e7ef44652faf7a5cf7f744e4974409467c3879773e9f70",
+      "modified": false
+    },
+    {
+      "path": "hook/syscall_table_hook.c",
+      "upstream_path": "kernel/hook/syscall_table_hook.c",
+      "upstream_sha256": "93d621435475eca00f629a99d7cec9e00bd8f6c627061e64f59bdfbd298e9085",
+      "sha256": "93d621435475eca00f629a99d7cec9e00bd8f6c627061e64f59bdfbd298e9085",
+      "modified": false
+    },
+    {
+      "path": "hook/syscall_table_hook.h",
+      "upstream_path": "kernel/hook/syscall_table_hook.h",
+      "upstream_sha256": "aa493cc339d08eee643feb4510c089c3488dcb8dfecaa3fca679c68fd056eb99",
+      "sha256": "aa493cc339d08eee643feb4510c089c3488dcb8dfecaa3fca679c68fd056eb99",
+      "modified": false
+    },
+    {
+      "path": "include/arch.h",
+      "upstream_path": "kernel/include/arch.h",
+      "upstream_sha256": "342af1d269d812781a50646ea95d158edae84d882fc1e735cd480f943378da0d",
+      "sha256": "342af1d269d812781a50646ea95d158edae84d882fc1e735cd480f943378da0d",
+      "modified": false
+    },
+    {
+      "path": "include/klog.h",
+      "upstream_path": "kernel/include/klog.h",
+      "upstream_sha256": "032b31b94edbb66a133846611378a09d0f3aa2b01cab2671dd2b00198883807c",
+      "sha256": "032b31b94edbb66a133846611378a09d0f3aa2b01cab2671dd2b00198883807c",
+      "modified": false
+    },
+    {
+      "path": "include/ksu.h",
+      "upstream_path": "kernel/include/ksu.h",
+      "upstream_sha256": "6b592ae36efc0e0567bd41984ce5e7a9f8b6e3bdec4b0d1d737a0c73d055d3b8",
+      "sha256": "6b592ae36efc0e0567bd41984ce5e7a9f8b6e3bdec4b0d1d737a0c73d055d3b8",
+      "modified": false
+    },
+    {
+      "path": "include/uapi/app_profile.h",
+      "upstream_path": "uapi/app_profile.h",
+      "upstream_sha256": "dffad173122bb7bb183a61b5c24269e3cb36e3d4f22598cd34c0130945bed615",
+      "sha256": "dffad173122bb7bb183a61b5c24269e3cb36e3d4f22598cd34c0130945bed615",
+      "modified": false
+    },
+    {
+      "path": "include/uapi/feature.h",
+      "upstream_path": "uapi/feature.h",
+      "upstream_sha256": "5ffc7567a68b6d127dd3094d9b209024518946ceadbedf5d54e19f4fd436a99f",
+      "sha256": "5ffc7567a68b6d127dd3094d9b209024518946ceadbedf5d54e19f4fd436a99f",
+      "modified": false
+    },
+    {
+      "path": "include/uapi/ksu.h",
+      "upstream_path": "uapi/ksu.h",
+      "upstream_sha256": "0fd450a02d80ffd0ee0ae0294e6e6a12135ae0b67e67778ff994df7b83eddc77",
+      "sha256": "0fd450a02d80ffd0ee0ae0294e6e6a12135ae0b67e67778ff994df7b83eddc77",
+      "modified": false
+    },
+    {
+      "path": "include/uapi/selinux.h",
+      "upstream_path": "uapi/selinux.h",
+      "upstream_sha256": "14670276c260cab38362f69d4eb1e29d157ca2bf91db62778db667c3b1d3e947",
+      "sha256": "14670276c260cab38362f69d4eb1e29d157ca2bf91db62778db667c3b1d3e947",
+      "modified": false
+    },
+    {
+      "path": "include/uapi/sulog.h",
+      "upstream_path": "uapi/sulog.h",
+      "upstream_sha256": "a84726fb3e103f134b0900a0c41ece3d6ce72f89ba97ad2fc4365729f7c64a9c",
+      "sha256": "a84726fb3e103f134b0900a0c41ece3d6ce72f89ba97ad2fc4365729f7c64a9c",
+      "modified": false
+    },
+    {
+      "path": "include/uapi/supercall.h",
+      "upstream_path": "uapi/supercall.h",
+      "upstream_sha256": "b9127b60693d4985e795482e53b634fe8c2f3195fa556adc55a95b958ef6e1d5",
+      "sha256": "b9127b60693d4985e795482e53b634fe8c2f3195fa556adc55a95b958ef6e1d5",
+      "modified": false
+    },
+    {
+      "path": "include/util.h",
+      "upstream_path": "kernel/include/util.h",
+      "upstream_sha256": "8d0f1c90a52f47af6936dfb48dd42c98b4b8271845aa9e44a9f73e34d9d993aa",
+      "sha256": "8d0f1c90a52f47af6936dfb48dd42c98b4b8271845aa9e44a9f73e34d9d993aa",
+      "modified": false
+    },
+    {
+      "path": "infra/event_queue.c",
+      "upstream_path": "kernel/infra/event_queue.c",
+      "upstream_sha256": "e127c070a47a4321c8304137141285007caa37e251380cfff725093b4dd4eae9",
+      "sha256": "e127c070a47a4321c8304137141285007caa37e251380cfff725093b4dd4eae9",
+      "modified": false
+    },
+    {
+      "path": "infra/event_queue.h",
+      "upstream_path": "kernel/infra/event_queue.h",
+      "upstream_sha256": "60b5642b36f89445a47f2c0f87e427eb2f6d3b32114d2ff044ced2139c0da085",
+      "sha256": "60b5642b36f89445a47f2c0f87e427eb2f6d3b32114d2ff044ced2139c0da085",
+      "modified": false
+    },
+    {
+      "path": "infra/file_wrapper.c",
+      "upstream_path": "kernel/infra/file_wrapper.c",
+      "upstream_sha256": "a40235ec33d5be84606f0ad8c44ed883d999a62353f70adc08a14d70e59af357",
+      "sha256": "a40235ec33d5be84606f0ad8c44ed883d999a62353f70adc08a14d70e59af357",
+      "modified": false
+    },
+    {
+      "path": "infra/file_wrapper.h",
+      "upstream_path": "kernel/infra/file_wrapper.h",
+      "upstream_sha256": "58b15b29daba43699a82fc2f42fcdf927f9cdcd01cf079f7f3f9ce67b2dd89c9",
+      "sha256": "58b15b29daba43699a82fc2f42fcdf927f9cdcd01cf079f7f3f9ce67b2dd89c9",
+      "modified": false
+    },
+    {
+      "path": "infra/seccomp_cache.c",
+      "upstream_path": "kernel/infra/seccomp_cache.c",
+      "upstream_sha256": "a8103b5e3667502d23ec3c9f17b40b6279968c17082293c07987fa24acb89f5f",
+      "sha256": "a8103b5e3667502d23ec3c9f17b40b6279968c17082293c07987fa24acb89f5f",
+      "modified": false
+    },
+    {
+      "path": "infra/seccomp_cache.h",
+      "upstream_path": "kernel/infra/seccomp_cache.h",
+      "upstream_sha256": "8e99fd1dd0cc61c38db3415b958af22e364593022e279f184cf20827fb655bef",
+      "sha256": "8e99fd1dd0cc61c38db3415b958af22e364593022e279f184cf20827fb655bef",
+      "modified": false
+    },
+    {
+      "path": "infra/su_mount_ns.c",
+      "upstream_path": "kernel/infra/su_mount_ns.c",
+      "upstream_sha256": "a7dd821f194d94f93cf5490e436512b4e2696dbed6268637c18ea022d5b92f25",
+      "sha256": "a7dd821f194d94f93cf5490e436512b4e2696dbed6268637c18ea022d5b92f25",
+      "modified": false
+    },
+    {
+      "path": "infra/su_mount_ns.h",
+      "upstream_path": "kernel/infra/su_mount_ns.h",
+      "upstream_sha256": "e6aaa317acec8d2c5d36741e76da7171ce530fecdd38b0c92a91d6df953489d8",
+      "sha256": "e6aaa317acec8d2c5d36741e76da7171ce530fecdd38b0c92a91d6df953489d8",
+      "modified": false
+    },
+    {
+      "path": "infra/symbol_resolver.c",
+      "upstream_path": "kernel/infra/symbol_resolver.c",
+      "upstream_sha256": "ae1e3fd33077c3402ffcf365a2fe33e1696eb59f43fffc7678be6decf3b34904",
+      "sha256": "ae1e3fd33077c3402ffcf365a2fe33e1696eb59f43fffc7678be6decf3b34904",
+      "modified": false
+    },
+    {
+      "path": "infra/symbol_resolver.h",
+      "upstream_path": "kernel/infra/symbol_resolver.h",
+      "upstream_sha256": "d368c61af630cc106fe1f5b5367327bd17a060824af2044d0e9ab06b40a3ac13",
+      "sha256": "d368c61af630cc106fe1f5b5367327bd17a060824af2044d0e9ab06b40a3ac13",
+      "modified": false
+    },
+    {
+      "path": "manager/apk_sign.c",
+      "upstream_path": "kernel/manager/apk_sign.c",
+      "upstream_sha256": "05c7e29c988460a96fea034d7c329dc8ac0f1eb14d1280bf317f8a7f71e05cd8",
+      "sha256": "05c7e29c988460a96fea034d7c329dc8ac0f1eb14d1280bf317f8a7f71e05cd8",
+      "modified": false
+    },
+    {
+      "path": "manager/apk_sign.h",
+      "upstream_path": "kernel/manager/apk_sign.h",
+      "upstream_sha256": "77fe6a1652611754f15b813a31780f0e4ac3c5d96f5b7d5c9ed0a69f03136d0f",
+      "sha256": "77fe6a1652611754f15b813a31780f0e4ac3c5d96f5b7d5c9ed0a69f03136d0f",
+      "modified": false
+    },
+    {
+      "path": "manager/manager_identity.h",
+      "upstream_path": "kernel/manager/manager_identity.h",
+      "upstream_sha256": "60635b77bb82eaab6fe7c92a9c3f67867d5d7f99cef6f00590ca27bbd0be633a",
+      "sha256": "60635b77bb82eaab6fe7c92a9c3f67867d5d7f99cef6f00590ca27bbd0be633a",
+      "modified": false
+    },
+    {
+      "path": "manager/manager_observer.h",
+      "upstream_path": "kernel/manager/manager_observer.h",
+      "upstream_sha256": "11783c12d3369216f4200631b1e6505d4a91a8cb6c39e3942c65ec4af3b9e217",
+      "sha256": "11783c12d3369216f4200631b1e6505d4a91a8cb6c39e3942c65ec4af3b9e217",
+      "modified": false
+    },
+    {
+      "path": "manager/pkg_observer.c",
+      "upstream_path": "kernel/manager/pkg_observer.c",
+      "upstream_sha256": "6be13986a912dd94120e0616f1dec32c3fea12c0b337b2c979e16c8214500b74",
+      "sha256": "6be13986a912dd94120e0616f1dec32c3fea12c0b337b2c979e16c8214500b74",
+      "modified": false
+    },
+    {
+      "path": "manager/pkg_observer_defs.h",
+      "upstream_path": "kernel/manager/pkg_observer_defs.h",
+      "upstream_sha256": "966cd97dc20b4af1d6289d495d9a1b31e6a85d22142b2f7a4fba987b9970f453",
+      "sha256": "966cd97dc20b4af1d6289d495d9a1b31e6a85d22142b2f7a4fba987b9970f453",
+      "modified": false
+    },
+    {
+      "path": "manager/throne_tracker.c",
+      "upstream_path": "kernel/manager/throne_tracker.c",
+      "upstream_sha256": "41c3d4f92da128498005ac8a0981b4217e9b5891a4ea95d1997f368cad0ab452",
+      "sha256": "41c3d4f92da128498005ac8a0981b4217e9b5891a4ea95d1997f368cad0ab452",
+      "modified": false
+    },
+    {
+      "path": "manager/throne_tracker.h",
+      "upstream_path": "kernel/manager/throne_tracker.h",
+      "upstream_sha256": "ec74a4c6285278ad48e9744c2a320b8fcdeb4de12f8c69dc579df766cf5913b1",
+      "sha256": "ec74a4c6285278ad48e9744c2a320b8fcdeb4de12f8c69dc579df766cf5913b1",
+      "modified": false
+    },
+    {
+      "path": "policy/allowlist.c",
+      "upstream_path": "kernel/policy/allowlist.c",
+      "upstream_sha256": "31429d3d2befd6e95566dc2f1645e4d96d85a063dc7f7e9444f82081726153fa",
+      "sha256": "31429d3d2befd6e95566dc2f1645e4d96d85a063dc7f7e9444f82081726153fa",
+      "modified": false
+    },
+    {
+      "path": "policy/allowlist.h",
+      "upstream_path": "kernel/policy/allowlist.h",
+      "upstream_sha256": "1cd75f7a086e9a065c2fd28f3b8c78ad86f2cba0ffd0bcb8996d1b2171c9c328",
+      "sha256": "1cd75f7a086e9a065c2fd28f3b8c78ad86f2cba0ffd0bcb8996d1b2171c9c328",
+      "modified": false
+    },
+    {
+      "path": "policy/app_profile.c",
+      "upstream_path": "kernel/policy/app_profile.c",
+      "upstream_sha256": "7ab68cd2d5e15cac7a039b61d5560406df5d64b9d6ddd60de92e5410b0f1382f",
+      "sha256": "7ab68cd2d5e15cac7a039b61d5560406df5d64b9d6ddd60de92e5410b0f1382f",
+      "modified": false
+    },
+    {
+      "path": "policy/app_profile.h",
+      "upstream_path": "kernel/policy/app_profile.h",
+      "upstream_sha256": "2dc55f1be14252da1b4f9794c642e798f899f17b2205ffbbfb051e60f3d0a072",
+      "sha256": "2dc55f1be14252da1b4f9794c642e798f899f17b2205ffbbfb051e60f3d0a072",
+      "modified": false
+    },
+    {
+      "path": "policy/feature.c",
+      "upstream_path": "kernel/policy/feature.c",
+      "upstream_sha256": "0423ee23b49769aab0a0aaaaf06ce31d9cc35bd9c2a52df6c51395ee71c95a51",
+      "sha256": "0423ee23b49769aab0a0aaaaf06ce31d9cc35bd9c2a52df6c51395ee71c95a51",
+      "modified": false
+    },
+    {
+      "path": "policy/feature.h",
+      "upstream_path": "kernel/policy/feature.h",
+      "upstream_sha256": "87c4462027b1cfa20cb8c781ce06dec5ee859103710d58957111c6b39c34ba21",
+      "sha256": "87c4462027b1cfa20cb8c781ce06dec5ee859103710d58957111c6b39c34ba21",
+      "modified": false
+    },
+    {
+      "path": "runtime/boot_event.c",
+      "upstream_path": "kernel/runtime/boot_event.c",
+      "upstream_sha256": "1b639161a84770401d09b1b45879b99d10efb770c62033e46ec28dc0201ada89",
+      "sha256": "1b639161a84770401d09b1b45879b99d10efb770c62033e46ec28dc0201ada89",
+      "modified": false
+    },
+    {
+      "path": "runtime/ksud.h",
+      "upstream_path": "kernel/runtime/ksud.h",
+      "upstream_sha256": "3b196e14aba75eaa48ed58f6955bc65bc48c4d4e8527f17d3948bf99d53bf4ba",
+      "sha256": "3b196e14aba75eaa48ed58f6955bc65bc48c4d4e8527f17d3948bf99d53bf4ba",
+      "modified": false
+    },
+    {
+      "path": "runtime/ksud_boot.h",
+      "upstream_path": "kernel/runtime/ksud_boot.h",
+      "upstream_sha256": "a9a0c671b555e71e81b32d96f9cb2fa944a5343dda2279ba8b6eedeefb15d1c1",
+      "sha256": "a9a0c671b555e71e81b32d96f9cb2fa944a5343dda2279ba8b6eedeefb15d1c1",
+      "modified": false
+    },
+    {
+      "path": "runtime/ksud_integration.c",
+      "upstream_path": "kernel/runtime/ksud_integration.c",
+      "upstream_sha256": "ad5791cc8d5e5bf31e881a328b2199d8d6701f9d022915b3d026fd1bdbeac0cf",
+      "sha256": "90335da0a5bb3e92aefa2c90d745b1addb16be77a8d07dfce9cbae200f2cd2b3",
+      "modified": true
+    },
+    {
+      "path": "selinux/Makefile",
+      "upstream_path": "kernel/selinux/Makefile",
+      "upstream_sha256": "35360ae97be44f77b7a263542c871f3846a21c4dba8dca893239c3dded5ad328",
+      "sha256": "35360ae97be44f77b7a263542c871f3846a21c4dba8dca893239c3dded5ad328",
+      "modified": false
+    },
+    {
+      "path": "selinux/rules.c",
+      "upstream_path": "kernel/selinux/rules.c",
+      "upstream_sha256": "359213e01cde250d98874f701d8264eb4e0099c4c720f0bddabf1f59ac6261df",
+      "sha256": "1cffd7b427ef9af769991780b3807278f19aad512e4dd62c774e13ecafd6cfd8",
+      "modified": true
+    },
+    {
+      "path": "selinux/selinux.c",
+      "upstream_path": "kernel/selinux/selinux.c",
+      "upstream_sha256": "9101c0198a937ef91182a45a8f799e8049e616604f174c8e7b7ee49450eb1604",
+      "sha256": "185786c48add580d1e1d1269e511ad9e6b56e5e6c88a80c4893c1264892d2496",
+      "modified": true
+    },
+    {
+      "path": "selinux/selinux.h",
+      "upstream_path": "kernel/selinux/selinux.h",
+      "upstream_sha256": "ff6439ba5a56cb58ef859fe35bda2fa223935f7f5bfc902aadfcc1ffb7a982cf",
+      "sha256": "ff6439ba5a56cb58ef859fe35bda2fa223935f7f5bfc902aadfcc1ffb7a982cf",
+      "modified": false
+    },
+    {
+      "path": "selinux/sepolicy.c",
+      "upstream_path": "kernel/selinux/sepolicy.c",
+      "upstream_sha256": "fe9aa1c06144dcb385f30b0d953c57a277de3e8051a4000f057ff69597e4d76e",
+      "sha256": "fe9aa1c06144dcb385f30b0d953c57a277de3e8051a4000f057ff69597e4d76e",
+      "modified": false
+    },
+    {
+      "path": "selinux/sepolicy.h",
+      "upstream_path": "kernel/selinux/sepolicy.h",
+      "upstream_sha256": "574af9c782fbf96dfb8dbb5974237ffd59ff3e5bcb45fa5a564bd80d21997684",
+      "sha256": "574af9c782fbf96dfb8dbb5974237ffd59ff3e5bcb45fa5a564bd80d21997684",
+      "modified": false
+    },
+    {
+      "path": "setup.sh",
+      "upstream_path": "kernel/setup.sh",
+      "upstream_sha256": "260bcdc76e12a7ad6f3703286e6fba239b166cd4fa1009314a63b88876ff8f1a",
+      "sha256": "260bcdc76e12a7ad6f3703286e6fba239b166cd4fa1009314a63b88876ff8f1a",
+      "modified": false
+    },
+    {
+      "path": "sulog/event.c",
+      "upstream_path": "kernel/sulog/event.c",
+      "upstream_sha256": "e745ed6df1eea77a7f6c7e7420429f3449e0c9a51afdd2538a9bc7fed30e9ea3",
+      "sha256": "e745ed6df1eea77a7f6c7e7420429f3449e0c9a51afdd2538a9bc7fed30e9ea3",
+      "modified": false
+    },
+    {
+      "path": "sulog/event.h",
+      "upstream_path": "kernel/sulog/event.h",
+      "upstream_sha256": "96c1bc44e2d36cf6643dec618632910ac9f4a56e84e218eb5ec571e601a0016f",
+      "sha256": "96c1bc44e2d36cf6643dec618632910ac9f4a56e84e218eb5ec571e601a0016f",
+      "modified": false
+    },
+    {
+      "path": "sulog/fd.c",
+      "upstream_path": "kernel/sulog/fd.c",
+      "upstream_sha256": "fa46a62ee3fc8ded15045282aaa282b27d215ba49283ec572bc4ed79012184ef",
+      "sha256": "fa46a62ee3fc8ded15045282aaa282b27d215ba49283ec572bc4ed79012184ef",
+      "modified": false
+    },
+    {
+      "path": "sulog/fd.h",
+      "upstream_path": "kernel/sulog/fd.h",
+      "upstream_sha256": "6a5a5baef51dcc0cfd76957f5487c587ce635a80c9d9b9b60302ff330b0ba96a",
+      "sha256": "6a5a5baef51dcc0cfd76957f5487c587ce635a80c9d9b9b60302ff330b0ba96a",
+      "modified": false
+    },
+    {
+      "path": "supercall/dispatch.c",
+      "upstream_path": "kernel/supercall/dispatch.c",
+      "upstream_sha256": "336103fae550102da72b26dc736c7815065c47c78365220585ef475a66f034c0",
+      "sha256": "336103fae550102da72b26dc736c7815065c47c78365220585ef475a66f034c0",
+      "modified": false
+    },
+    {
+      "path": "supercall/internal.h",
+      "upstream_path": "kernel/supercall/internal.h",
+      "upstream_sha256": "dd83f610565ff4b985fe5a5431bb7c8720df8dbc92128657a585cfd8e6068240",
+      "sha256": "dd83f610565ff4b985fe5a5431bb7c8720df8dbc92128657a585cfd8e6068240",
+      "modified": false
+    },
+    {
+      "path": "supercall/perm.c",
+      "upstream_path": "kernel/supercall/perm.c",
+      "upstream_sha256": "cfcdb81f0560b1378ec2c7ae0a0f3550e1441c0ca7a4580e722276560332a402",
+      "sha256": "cfcdb81f0560b1378ec2c7ae0a0f3550e1441c0ca7a4580e722276560332a402",
+      "modified": false
+    },
+    {
+      "path": "supercall/supercall.c",
+      "upstream_path": "kernel/supercall/supercall.c",
+      "upstream_sha256": "f89543d9ca1cd4fce1fc77380af42d104cf873483eb242141a27f0303d49bd45",
+      "sha256": "f89543d9ca1cd4fce1fc77380af42d104cf873483eb242141a27f0303d49bd45",
+      "modified": false
+    },
+    {
+      "path": "supercall/supercall.h",
+      "upstream_path": "kernel/supercall/supercall.h",
+      "upstream_sha256": "27ee3497a8fdbf117fe05aa56a764d84bcdea7bfc6a7dc68a3f4c8191f6ad9fa",
+      "sha256": "27ee3497a8fdbf117fe05aa56a764d84bcdea7bfc6a7dc68a3f4c8191f6ad9fa",
+      "modified": false
+    }
+  ]
+}

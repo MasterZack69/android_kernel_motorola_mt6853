@@ -1,68 +1,42 @@
-# Kyoto full-build validation
+# Kyoto KernelSU-Next validation status
 
-**PASS: complete standalone vendor-config kernel build.**
+**NOT BUILT. Source-level checks only.**
 
-Device: Motorola Edge 20 Fusion/Lite, codename `kyoto`.
-Kernel release: `4.19.325-cip135-st19+`.
-Base branch: lineage-22.2, commit `cbbc069866f7b9957337153ff12c9807b8c46bef`.
-Integration source: commit `2572daf3f9dd9e1f2e156063e39144856c85df1a`.
-KernelSU: pinned official v0.9.5, source
-`b766b98513b5a7eb33bc1c4a76b5702bf1288f07`, version 11872.
-Toolchain: host Clang/LLVM/LLD 15.0.7 (Amazon Linux 2023).
+Kernel: Motorola Kyoto 4.19.325, source base
+`b6d8b2f43eff37453e1e7f84e9ae634c1795cc70`.
+Next: v3.4.0-legacy at `8af3d4fec33be32fa5d3f8dae4f380fac45bf2cd`.
 
-## Reproduction
+The inherited v0.9.5 build-success report applied to source commit
+`2572daf3f9dd9e1f2e156063e39144856c85df1a` on `ksu-linage-22.2`.
+It is historical evidence for that implementation only and is not a build
+result for this branch.
 
-The helper `scripts/build-kyoto-ksu.sh` reproduces the configuration and
-build targets. Put the same Clang/LLVM toolchain in PATH, then run:
+## Source-only checks
 
-```sh
-OUT=/absolute/path/to/out-kyoto JOBS=2 bash scripts/build-kyoto-ksu.sh
-```
+- Compared vendored files and materialized UAPI headers with the pinned tag;
+  per-file hashes and local differences are recorded in SOURCE-MANIFEST.json.
+- Reviewed manual hook definitions, shared declarations and call sites.
+- Checked Kbuild object paths, local includes, Manager version/UAPI pairing,
+  no build-time fetches/source rewrites, and configuration mode restrictions.
+- Reviewed path_umount ownership against Kyoto's existing namespace helpers.
+- Reviewed native 4.19 seccomp and blob-aware SELinux APIs without adding
+  guessed struct fields.
+- Confirmed no SUSFS code/config was imported and no FocalTech gesture files
+  were changed relative to the branch copied for this port.
+- Checked helper shell syntax and git diff whitespace. No make, Kconfig
+  generation, C/C++ compiler, linker, dtc, or image generation was run.
 
-Configuration: `k6853v1_64_6360_k419_defconfig`, then, in order:
+These checks are not a substitute for compilation or runtime tests. They
+cannot prove there are no compiler/link errors or boot-time failures.
 
-1. `arch/arm64/configs/ext_config/moto-k6853v1_64_6360_k419.config`
-2. `arch/arm64/configs/ext_config/moto-k6853v1_64_6360_k419-kyoto.config`
-3. `kernel/configs/ksu.config`
+## Outstanding validation
 
-Ran `olddefconfig`, then:
+- Correct ROM-specific configuration/toolchain; full Image.gz, DTB/DTBO and modules.
+- CFI/LTO and vendor-module ABI compatibility.
+- Boot, Manager recognition, userspace daemon initialization and root grants.
+- Native/compat su, SELinux behavior, unmount profiles and safe mode.
+- Device-specific A/B firmware safety. No flashable image is provided.
+- Banking-app compatibility; perfect root hiding is not promised.
 
-```sh
-make -j2 O=/absolute/path/to/out-kyoto ARCH=arm64 LLVM=1 LLVM_IAS=1 \
-  Image.gz dtbs modules
-```
-
-Result: **exit status 0**. No vendor-code fixes, global warning suppressions,
-or CFI/LTO disablement were required. Existing source/compiler/device-tree
-warnings remain; success means the build completed, not a warning-free build.
-
-## Verified outputs
-
-- Full `vmlinux` linked as ELF64 AArch64.
-- `Image` and `Image.gz` generated; `gzip -t Image.gz` passed.
-- `mt6853.dtb` generated.
-- Kyoto EVB, EVT, and DVT1 overlay `.dtbo` files generated.
-- All 20 configured loadable modules built.
-- `llvm-nm vmlinux` verified KernelSU initialization, exec, access/stat,
-  read, input-safe-mode, devpts, and prctl hook definitions and hook flags.
-- Final config: `CONFIG_KSU=y`, `CONFIG_OVERLAY_FS=y`,
-  `CONFIG_SECURITY_SELINUX=y`, `CONFIG_LTO_CLANG=y`, `CONFIG_CFI_CLANG=y`;
-  kprobes and kprobe events disabled.
-
-Config SHA-256: `7c148da7afa980cbafc8819711fa61d2a73b25cf04bd63271a1ed5e64a1c58f2`.
-Image.gz SHA-256: `37b1218d0fded71359455baa37cf77b5ae0dc2c0abfcf84f6804e6655d2f4195`.
-
-## Not validated / not supplied
-
-- No physical-device boot, root/Manager, safe-mode, SELinux, or module tests.
-- Not a full LineageOS ROM build; no authoritative Kyoto LineageOS device-tree
-  build configuration was found. Additional ROM-specific flags/fragments,
-  ABI and vendor-module compatibility must be checked before deployment.
-- No boot.img, AVB/signing work, or AnyKernel flashable ZIP is supplied.
-- Raw DTBO files are not a packaged dtbo.img.
-- No `path_umount` backport: the legacy module-unmount limitation remains.
-- This is KernelSU v0.9.5, **not v3.3.0**. Upstream v3.3.0 requires kprobes;
-  the archived non-GKI guide names v0.9.5 as the last supported release.
-
-The earlier generic ARM64 smoke check also passed, but the full Kyoto
-build above supersedes that limited compilation evidence.
+The inherited gesture commit is retained unchanged. Its previously identified
+softirq timer/mutex concern is separate from this port and remains unresolved.

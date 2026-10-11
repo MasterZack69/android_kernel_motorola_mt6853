@@ -143,6 +143,10 @@ int vfs_statx_fd(unsigned int fd, struct kstat *stat,
 	if (f.file) {
 		error = vfs_getattr(&f.file->f_path, stat,
 				    request_mask, query_flags);
+#ifdef CONFIG_KSU
+		if (!error)
+			ksu_handle_init_rc_stat(f.file, &stat->size);
+#endif
 		fdput(f);
 	}
 	return error;

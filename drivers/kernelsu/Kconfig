@@ -1,19 +1,38 @@
-menu "KernelSU"
+# SPDX-License-Identifier: GPL-2.0
+menu "KernelSU-Next"
 
 config KSU
-	bool "KernelSU function support (manual hooks)"
-	depends on SECURITY && SECURITY_SELINUX && OVERLAY_FS && !KPROBES
+	bool "KernelSU-Next v3.4.0-legacy (Kyoto manual hooks)"
+	depends on SECURITY && SECURITY_SELINUX && NET && INET && AUDIT && !KPROBES
 	default n
 	help
-	  Enable kernel-level root privileges on Android System.
-	  This tree uses built-in manual hooks. Kprobes must be disabled.
-	  Enable with kernel/configs/ksu.config after your device config.
+	  Built-in KernelSU-Next for Kyoto's 4.19 kernel. Uses source-level
+	  manual hooks, not kprobes or syscall-table patching.
+	  Install the matching normal KernelSU-Next v3.4.0 Manager separately.
+
+config KSU_MANUAL_HOOK
+	bool
+	depends on KSU
+	default y
 
 config KSU_DEBUG
-	bool "KernelSU debug mode"
+	bool "KernelSU-Next debug mode"
 	depends on KSU
 	default n
-	help
-	  Enable KernelSU debug mode.
+
+config KSU_DISABLE_MANAGER
+	bool "Disable KernelSU-Next Manager integration"
+	depends on KSU
+	default n
+
+config KSU_DISABLE_POLICY
+	bool "Disable per-app policy profiles"
+	depends on KSU
+	default n
+
+config KSU_ALLOWLIST_WORKAROUND
+	bool "KernelSU-Next allowlist workaround"
+	depends on KSU
+	default n
 
 endmenu

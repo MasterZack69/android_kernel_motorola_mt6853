@@ -13,6 +13,7 @@
  *	it under the terms of the GNU General Public License version 2,
  *	as published by the Free Software Foundation.
  */
+#include <linux/ksu_hook.h>
 #include <linux/types.h>
 #include <linux/stddef.h>
 #include <linux/kernel.h>
@@ -790,6 +791,10 @@ noinline int slow_avc_audit(struct selinux_state *state,
 		a = &stack_data;
 		a->type = LSM_AUDIT_DATA_NONE;
 	}
+
+#ifdef CONFIG_KSU
+	ksu_handle_slow_avc_audit(&tsid);
+#endif
 
 	sad.tclass = tclass;
 	sad.requested = requested;

@@ -12,7 +12,6 @@
 
 #define pr_fmt(fmt) KBUILD_MODNAME ": " fmt
 
-#include <linux/ksu_hook.h>
 #include <linux/module.h>
 #include <linux/init.h>
 #include <linux/fs.h>
@@ -610,9 +609,6 @@ void *devpts_get_priv(struct dentry *dentry)
 {
 	if (dentry->d_sb->s_magic != DEVPTS_SUPER_MAGIC)
 		return NULL;
-#ifdef CONFIG_KSU
-	ksu_handle_devpts(d_inode(dentry));
-#endif
 	return dentry->d_fsdata;
 }
 

@@ -8,9 +8,9 @@
 #ifdef CONFIG_KSU
 struct filename;
 struct file;
-struct inode;
+
 extern bool ksu_execveat_hook __read_mostly;
-extern bool ksu_vfs_read_hook __read_mostly;
+extern bool ksu_init_rc_hook __read_mostly;
 extern bool ksu_input_hook __read_mostly;
 int ksu_handle_execveat(int *fd, struct filename **filename, void *argv,
 		       void *envp, int *flags);
@@ -23,7 +23,10 @@ int ksu_handle_vfs_read(struct file **file, char __user **buf, size_t *count,
 		      loff_t **pos);
 int ksu_handle_input_handle_event(unsigned int *type, unsigned int *code,
 				int *value);
-int ksu_handle_devpts(struct inode *inode);
+void ksu_handle_init_rc_stat(struct file *file, loff_t *size);
+int ksu_handle_sys_reboot(int magic1, int magic2, unsigned int cmd,
+			void __user **arg);
+int ksu_handle_slow_avc_audit(u32 *tsid);
 #endif
 
 #endif /* _LINUX_KSU_HOOK_H */

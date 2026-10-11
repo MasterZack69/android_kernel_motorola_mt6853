@@ -1,9 +1,11 @@
-Source: https://github.com/tiann/KernelSU
-Tag: v0.9.5
-Commit: b766b98513b5a7eb33bc1c4a76b5702bf1288f07
-KernelSU version: 11872
+Source: https://github.com/KernelSU-Next/KernelSU-Next
+Tag: v3.4.0-legacy
+Commit: 8af3d4fec33be32fa5d3f8dae4f380fac45bf2cd
+KernelSU-Next reported version: 33294
+Manager: normal KernelSU_Next_v3.4.0_33294-release.apk
+Manager UAPI: 4
 
-Only kernel/ is vendored; retain upstream GPL-2.0 license.
-Local changes: built-in/manual-only Kconfig; fixed version without git/network
-access at build time; manual-hook startup log. Use matching v0.9.5 Manager.
-embed_ksud.c retains the upstream stub; Manager installs the userspace daemon.
+Vendored kernel/ and materialized uapi/ headers; upstream GPL-2.0 retained.
+Local changes are documented in KERNELSU.md and SOURCE-MANIFEST.json.
+No fetches, git-derived versioning or sed source mutations during builds.
+No SUSFS integration in this branch. No build or device validation performed.

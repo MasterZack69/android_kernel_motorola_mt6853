@@ -1,73 +1,79 @@
-# KernelSU manual-hook integration
+# KernelSU-Next v3.4.0-legacy — Kyoto source port
 
-This branch starts at lineage-22.2 commit
-`cbbc069866f7b9957337153ff12c9807b8c46bef` (Linux 4.19.325).
-It vendors the kernel portion of tiann/KernelSU v0.9.5 at
-`b766b98513b5a7eb33bc1c4a76b5702bf1288f07`, release version 11872.
-Use the official matching **KernelSU v0.9.5 Manager**. This is an older
-non-GKI integration baseline, not a claim of current upstream support.
-Official KernelSU v3.3.0 is newer, but its Kconfig requires kprobes, and
-its archived non-GKI guide explicitly names v0.9.5 as the last supported
-release. This branch is not advertised as KernelSU 3.3.0.
+## Provenance and status
 
-## Hooks
+This branch copies `ksu-linage-22.2` at
+`b6d8b2f43eff37453e1e7f84e9ae634c1795cc70`, including its existing FocalTech
+gesture update. It replaces the old official KernelSU v0.9.5 implementation
+with KernelSU-Next **v3.4.0-legacy**, pinned at
+`8af3d4fec33be32fa5d3f8dae4f380fac45bf2cd`.
 
-- `do_execveat_common`: Android init/bootstrap and su compatibility.
-- `do_faccessat` and `vfs_statx`: su path compatibility.
-- `vfs_read`: init.rc injection.
-- `input_handle_event`: volume-down safe mode.
-- `devpts_get_priv`: terminal SELinux compatibility.
-- KernelSU's built-in LSM registers prctl, rename, and setuid hooks.
+**Source-only port: not compiled, linked, booted or runtime-tested.**
+The earlier v0.9.5 build does not validate this port. No image is supplied.
+This branch contains **no SUSFS**, no userspace binaries, no APK, and no
+flashing, AVB or slot-switching changes.
 
-KernelSU is deliberately **built-in only**. Its Kconfig requires SELinux,
-OverlayFS, and disabled kprobes. No kprobe runtime hooks are registered.
-The vendored version is fixed; builds never fetch upstream or derive a
-KernelSU version from the Motorola kernel's git history.
+`drivers/kernelsu` vendors upstream `kernel/`, with the upstream `uapi/`
+symlink materialized as ordinary files in `include/uapi`. GPL-2.0 is retained.
+See `drivers/kernelsu/UPSTREAM` and `SOURCE-MANIFEST.json` for exact provenance.
 
-The upstream `embed_ksud.c` stub is retained. Install the matching Manager
-and complete its userspace installation; an embedded standalone daemon
-is not provided by this source integration.
+## Integration
 
-## Configuration and build
+- Built-in `CONFIG_KSU=y`, `CONFIG_KSU_MANUAL_HOOK=y`; probes and syscall-table
+  patching are disabled. The local Kconfig deliberately restricts this branch
+  to its audited integration mode, rather than advertising unported alternatives.
+- `do_execveat_common`: existing native/compat exec bootstrap and su hooks.
+- `do_faccessat`, `vfs_statx`: existing su path compatibility hooks.
+- `vfs_read`: init.rc read proxy, gated by the actual Next init-rc lifecycle flag.
+- `vfs_statx_fd`: kernel-side init.rc size adjustment shared by native fstat,
+  compat fstat64 and fd-based statx. The proxy is installed before the first read,
+  including read_iter; no userspace stat structure offset tricks are needed.
+- `input_handle_event`: existing volume-down safe-mode hook.
+- `reboot`: modern Manager descriptor installation hook before CAP_SYS_BOOT
+  checking. Normal reboot authorization and magic checks remain in place.
+- `slow_avc_audit`: Next's manual audit-log hook; this changes logged SID data,
+  not the permission decision already made by SELinux.
+- Upstream Next LSM hooks handle setuid transitions and Manager package tracking.
+- Removed the obsolete v0.9.5 devpts hook; Next has no matching exported handler.
 
-For Motorola Edge 20 Fusion/Lite (`kyoto`), the standalone build helper uses
-`k6853v1_64_6360_k419_defconfig`, followed by the Motorola platform and
-Kyoto-specific fragments, then the KernelSU fragment. It preserves CFI/LTO.
+## Explicit compatibility changes
 
-```sh
-# Put the desired Clang/LLVM toolchain's bin directory first in PATH.
-OUT="$PWD/out-kyoto-ksu" JOBS=2 bash scripts/build-kyoto-ksu.sh
-```
+`path_umount`/`can_umount` are explicitly backported to Kyoto's namespace code.
+The helper consumes both path references on success and failure. No unrelated
+mount API replacement or struct layout change was made.
 
-This is the repository's vendor-config target build, not a full LineageOS
-ROM build. Any additional ROM-specific fragments/flags must be supplied
-for matching a particular installed ROM. See KERNELSU-VALIDATION.md for
-what was actually compiled.
+The upstream Kbuild's build-time `sed` backports and git/network version logic
+are removed. Kyoto already has blob-aware `selinux_cred`/`selinux_inode` helpers;
+they are preserved. Its native 4.19 `put_seccomp_filter` path is used, without
+adding an unused `filter_count` field or modifying task layout. The stale
+`disable_seccomp(current)` declaration/calls are corrected to the upstream
+implementation's `disable_seccomp(void)` signature.
 
-First use the **correct device/ROM defconfig and Motorola fragments**.
-Do not assume a generic MT6853 config is suitable for your phone.
-After all device fragments, merge `kernel/configs/ksu.config` last:
+The Next SELinux context-write hook's 128-byte buffer gets an explicit terminator
+and one extra byte, preventing string operations from reading beyond a full
+128-byte input. Exec hooks reject NULL/error filenames before dereferencing.
 
-```sh
-# OUT must be your existing configured out-of-tree build directory.
-# Keep your ROM's compiler/toolchain variables on all make commands.
-sh scripts/kconfig/merge_config.sh -m -O "$OUT" \
-  "$OUT/.config" kernel/configs/ksu.config
-make O="$OUT" ARCH=arm64 LLVM=1 LLVM_IAS=1 olddefconfig
-```
+## Manager and userspace
 
-Before compiling, confirm `.config` contains `CONFIG_KSU=y`,
-`CONFIG_OVERLAY_FS=y`, and `CONFIG_SECURITY_SELINUX=y`, and does NOT contain
-`CONFIG_KPROBES=y` or `CONFIG_KSU=m`. If this fails, resolve dependencies
-rather than claiming KernelSU is enabled.
+Use the **normal KernelSU-Next v3.4.0 Manager**, not the old official v0.9.5 APK:
+https://github.com/KernelSU-Next/KernelSU-Next/releases/download/v3.4.0/KernelSU_Next_v3.4.0_33294-release.apk
 
-Use the device/ROM's normal image, DTB/DTBO, and module build targets.
-Do not disable CFI/LTO or other device security settings just to obtain a
-successful build. The repository's MTK build configuration references an
-Android Clang toolchain; device-image validation should use the matching
-ROM toolchain rather than assuming any host Clang release is equivalent.
+The reported kernel version is fixed to the matching release's 33294;
+UAPI version 4 and the upstream Next signing-certificate check are retained.
+This is a real source replacement, not a version bump to disguise v0.9.5.
+The Manager does not appear automatically; install it separately and complete
+its userspace installation after a separately validated kernel is running.
+Manager authorization, daemon bootstrap, root profiles, modules and safe mode
+remain untested on Kyoto.
 
-`path_umount` is not backported here; pre-5.9 KernelSU module-unmount
-functionality is therefore not available. Compilation alone cannot verify
-booting, Manager authorization, SELinux behavior, modules, or safe mode.
-No flashable boot image is claimed without a device-target build and test.
+## Future build (not run for this port)
+
+The existing `scripts/build-kyoto-ksu.sh` is updated for Next manual mode and
+uses `out-kyoto-ksunext` by default. It merges the same Motorola/Kyoto fragments
+followed by `kernel/configs/ksu.config`; CFI/LTO are preserved. It remains a
+standalone vendor-config build helper, not proof of matching a particular
+LineageOS ROM's device-tree build settings.
+
+Do not flash or switch A/B slots based on this source port. Establish the
+correct ROM toolchain/config, complete build and runtime validation, and
+resolve the reported older-firmware-slot brick risk independently first.

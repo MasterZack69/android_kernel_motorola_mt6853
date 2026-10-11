@@ -440,7 +440,7 @@ ssize_t vfs_read(struct file *file, char __user *buf, size_t count, loff_t *pos)
 	ssize_t ret;
 
 #ifdef CONFIG_KSU
-	if (unlikely(ksu_vfs_read_hook))
+	if (unlikely(READ_ONCE(ksu_init_rc_hook)))
 		ksu_handle_vfs_read(&file, &buf, &count, &pos);
 #endif
 
