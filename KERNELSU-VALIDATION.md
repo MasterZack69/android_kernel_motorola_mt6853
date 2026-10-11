@@ -23,7 +23,9 @@ result for this branch.
   guessed struct fields.
 - Confirmed no SUSFS code/config was imported and no FocalTech gesture files
   were changed relative to the branch copied for this port.
-- Checked helper shell syntax and git diff whitespace. No make, Kconfig
+- Checked helper shell syntax and git diff whitespace. Some unchanged
+  upstream Next lines retain trailing-whitespace warnings; these are not
+  compiler results. No make, Kconfig
   generation, C/C++ compiler, linker, dtc, or image generation was run.
 
 These checks are not a substitute for compilation or runtime tests. They
