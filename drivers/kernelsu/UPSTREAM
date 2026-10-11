@@ -8,4 +8,5 @@ Manager UAPI: 4
 Vendored kernel/ and materialized uapi/ headers; upstream GPL-2.0 retained.
 Local changes are documented in KERNELSU.md and SOURCE-MANIFEST.json.
 No fetches, git-derived versioning or sed source mutations during builds.
-No SUSFS integration in this branch. No build or device validation performed.
+No SUSFS integration in this branch. Full standalone vendor-config build passed
+with CFI/LTO and Clang/LLVM 15.0.7; see KERNELSU-VALIDATION.md. No device tests.

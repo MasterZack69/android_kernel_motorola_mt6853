@@ -8,8 +8,10 @@ gesture update. It replaces the old official KernelSU v0.9.5 implementation
 with KernelSU-Next **v3.4.0-legacy**, pinned at
 `8af3d4fec33be32fa5d3f8dae4f380fac45bf2cd`.
 
-**Source-only port: not compiled, linked, booted or runtime-tested.**
-The earlier v0.9.5 build does not validate this port. No image is supplied.
+**Full standalone vendor-config build passed** with Clang/LLVM 15.0.7 and
+CFI/LTO enabled. See KERNELSU-VALIDATION.md for exact source, configuration
+and hashes. This kernel is still **not booted or runtime-tested**; no flashable
+boot image is supplied. The earlier v0.9.5 build is a separate validation.
 This branch contains **no SUSFS**, no userspace binaries, no APK, and no
 flashing, AVB or slot-switching changes.
 
@@ -66,7 +68,7 @@ its userspace installation after a separately validated kernel is running.
 Manager authorization, daemon bootstrap, root profiles, modules and safe mode
 remain untested on Kyoto.
 
-## Future build (not run for this port)
+## Build (standalone vendor-config validation passed)
 
 The existing `scripts/build-kyoto-ksu.sh` is updated for Next manual mode and
 uses `out-kyoto-ksunext` by default. It merges the same Motorola/Kyoto fragments
