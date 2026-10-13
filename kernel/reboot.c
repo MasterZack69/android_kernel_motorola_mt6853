@@ -7,6 +7,9 @@
 #define pr_fmt(fmt)	"reboot: " fmt
 
 #include <linux/ksu_hook.h>
+#ifdef CONFIG_KSU_SUSFS
+#include <linux/susfs_def.h>
+#endif
 #include <linux/ctype.h>
 #include <linux/export.h>
 #include <linux/kexec.h>
@@ -314,6 +317,12 @@ SYSCALL_DEFINE4(reboot, int, magic1, int, magic2, unsigned int, cmd,
 	int ret = 0;
 
 #ifdef CONFIG_KSU
+#ifdef CONFIG_KSU_SUSFS
+	/* Dedicated private ABI; never forward its command numbers to reboot. */
+	if ((unsigned int)magic1 == 0xDEADBEEF &&
+	    (unsigned int)magic2 == SUSFS_MAGIC)
+		return ksu_handle_sys_reboot(magic1, magic2, cmd, &arg);
+#endif
 	ksu_handle_sys_reboot(magic1, magic2, cmd, &arg);
 #endif
 
