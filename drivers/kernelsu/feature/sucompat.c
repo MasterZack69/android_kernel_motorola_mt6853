@@ -34,6 +34,9 @@
 #include "policy/app_profile.h"
 #include "selinux/selinux.h"
 #include "sulog/event.h"
+#ifdef CONFIG_KSU_SUSFS
+#include <linux/susfs_def.h>
+#endif
 
 #define SU_PATH "/system/bin/su"
 #define SH_PATH "/system/bin/sh"
@@ -64,7 +67,7 @@ static const struct ksu_feature_handler su_compat_handler = {
 static void __user *userspace_stack_buffer(const void *d, size_t len)
 {
 	// Stack Pointer must be 16-byte aligned.
-	// We also subtract a safe margin (256 bytes) 
+	// We also subtract a safe margin (256 bytes)
 	// to avoid corrupting local variables or smth
 	unsigned long sp = current_user_stack_pointer();
 	sp = (sp - len - 256) & ~0xFUL; // Align downwards to nearest 16 bytes
@@ -241,6 +244,18 @@ int ksu_handle_execveat_sucompat(int *fd, struct filename **filename_ptr,
 	if (unlikely(!filename_ptr))
 		return 0;
 
+#ifdef CONFIG_KSU_SUSFS
+	if (!IS_ERR_OR_NULL(*filename_ptr) && current->pid != 1 &&
+	    is_init(current_cred()) && !strcmp((*filename_ptr)->name, KSUD_PATH)) {
+		escape_to_root_for_init();
+		if (is_ksu_domain()) {
+			susfs_clear_current_proc_no_su();
+			susfs_clear_current_proc_umounted();
+			susfs_clear_current_proc_umounted_for_zygote_next();
+		}
+		return 0;
+	}
+#endif
 	if (!ksu_su_compat_enabled)
 		return 0;
 
@@ -255,9 +270,9 @@ int ksu_handle_execveat_sucompat(int *fd, struct filename **filename_ptr,
 		return 0;
 
 	pr_info("do_execveat_common su found\n");
+	if (escape_with_root_profile())
+		return 0;
 	memcpy((void *)filename->name, ksud_path, sizeof(ksud_path));
-
-	escape_with_root_profile();
 
 	return 0;
 }

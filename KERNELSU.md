@@ -8,12 +8,11 @@ gesture update. It replaces the old official KernelSU v0.9.5 implementation
 with KernelSU-Next **v3.4.0-legacy**, pinned at
 `8af3d4fec33be32fa5d3f8dae4f380fac45bf2cd`.
 
-**Full standalone vendor-config build passed** with Clang/LLVM 15.0.7 and
-CFI/LTO enabled. See KERNELSU-VALIDATION.md for exact source, configuration
-and hashes. This kernel is still **not booted or runtime-tested**; no flashable
-boot image is supplied. The earlier v0.9.5 build is a separate validation.
-This branch contains **no SUSFS**, no userspace binaries, no APK, and no
-flashing, AVB or slot-switching changes.
+**This SUSFS branch is NOT BUILT or runtime-tested.** It adds the SUSFS v2.3.0
+source port described in SUSFS.md. The successful Next-only standalone build
+recorded in KERNELSU-VALIDATION.md belongs to the parent branch and does not
+validate these changes. No userspace binary, APK or boot image is included;
+no flashing, AVB or slot-switching changes are made.
 
 `drivers/kernelsu` vendors upstream `kernel/`, with the upstream `uapi/`
 symlink materialized as ordinary files in `include/uapi`. GPL-2.0 is retained.
@@ -35,7 +34,9 @@ See `drivers/kernelsu/UPSTREAM` and `SOURCE-MANIFEST.json` for exact provenance.
   checking. Normal reboot authorization and magic checks remain in place.
 - `slow_avc_audit`: Next's manual audit-log hook; this changes logged SID data,
   not the permission decision already made by SELinux.
-- Upstream Next LSM hooks handle setuid transitions and Manager package tracking.
+- Next LSM hooks retain Manager package tracking. In SUSFS mode the checked
+  setresuid syscall adapter owns zygote specialization; the LSM setuid handler
+  is bypassed to prevent double processing. SUSFS-off retains the Next handler.
 - Removed the obsolete v0.9.5 devpts hook; Next has no matching exported handler.
 
 ## Explicit compatibility changes

@@ -83,3 +83,51 @@ void __exit ksu_setuid_hook_exit(void)
 	pr_info("ksu_core_exit\n");
 	ksu_kernel_umount_exit();
 }
+#ifdef CONFIG_KSU_SUSFS
+#include <linux/susfs_def.h>
+#include "selinux/selinux.h"
+extern struct work_struct susfs_extra_works;
+
+/* Called only after UID and LSM validation, before commit_creds(), so the
+ * zygote SID is still available. Never unmount zygote_next's init namespace. */
+int ksu_susfs_handle_setresuid(uid_t ruid, uid_t euid, uid_t suid)
+{
+    bool next;
+    bool hide;
+
+    if (current_uid().val != 0 || ruid == (uid_t)-1 ||
+        ruid != euid || ruid != suid)
+        return 0;
+    next = susfs_is_sid_equal(current_cred(), susfs_zygote_next_sid);
+    if (!next && !susfs_is_sid_equal(current_cred(), susfs_zygote_sid))
+        return 0;
+
+    /* Forks inherit flags; do not carry stale marks into a newly specialized
+     * manager or root-allowed application. */
+    susfs_clear_current_proc_no_su();
+    susfs_clear_current_proc_umounted();
+    susfs_clear_current_proc_umounted_for_zygote_next();
+
+    if (ksu_is_manager_appid_valid() && is_uid_manager(ruid)) {
+        disable_seccomp();
+        ksu_install_fd();
+        return 0;
+    }
+    hide = is_isolated_process(ruid) ||
+           (is_appuid(ruid) && ksu_uid_should_umount(ruid));
+    if (hide) {
+        susfs_set_current_proc_no_su();
+        susfs_set_current_proc_umounted();
+        if (next)
+            susfs_set_current_proc_umounted_for_zygote_next();
+        else
+            ksu_handle_umount(current_uid().val, ruid);
+        queue_work(system_unbound_wq, &susfs_extra_works);
+    } else if (ksu_is_allow_uid_for_current(ruid)) {
+        disable_seccomp();
+    } else {
+        susfs_set_current_proc_no_su();
+    }
+    return 0;
+}
+#endif

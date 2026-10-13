@@ -1,0 +1,175 @@
+{
+  "base_branch": "ksu-next-lineage-22.2",
+  "base_commit": "837a9e3873282d1f7b25e84778679822bf86dadd",
+  "susfs_repository": "simonpunk/susfs4ksu",
+  "susfs_commit": "9892175b4acec7ee844e113b8d02c0f4d12cdfac",
+  "susfs_version": "v2.3.0",
+  "filesystem_reference_repository": "JackA1ltman/NonGKI_Kernel_Build_2nd",
+  "filesystem_reference_commit": "b5d7e5be60398f040b9e9919186c410c01a228da",
+  "validation": "source-only; no build or device test",
+  "files": [
+    {
+      "path": "KERNELSU-VALIDATION.md",
+      "sha256": "655bfd5f162446e3afcd24aff72935514fefcc9e19ee72b584b608db8de23be0"
+    },
+    {
+      "path": "KERNELSU.md",
+      "sha256": "89982a977082d22b3479b14d749c56e27edc8e9857245da05e346c1a32b0f608"
+    },
+    {
+      "path": "SUSFS-LICENSE",
+      "sha256": "3da27bc7c6a063f498b4278372d48e113453f93aecc709f44276e278fc0cac12"
+    },
+    {
+      "path": "SUSFS.md",
+      "sha256": "785c6358d2463a9d2ec8f21fc9b0a0b34e3eec354ac7f84a14ca483136f7375a"
+    },
+    {
+      "path": "drivers/kernelsu/Kconfig",
+      "sha256": "747d9d362a88732af7f94348de32276c9a51fbb59a181e65a421fced0cc21685"
+    },
+    {
+      "path": "drivers/kernelsu/SOURCE-MANIFEST.json",
+      "sha256": "77bc37714a57a54cb1234e20c88208b7643f08dfc2abf699ad865ac0bb2674b5"
+    },
+    {
+      "path": "drivers/kernelsu/core/init.c",
+      "sha256": "3606f9139b184ade26ed6d55baf84efe687ab81f033e7904f9dcf7ba6cd2f6fb"
+    },
+    {
+      "path": "drivers/kernelsu/feature/sucompat.c",
+      "sha256": "ff883e7c907cb4f5ccc8b0b08ec3d76a5b19ef74e3db0fe69fb5bd989975942c"
+    },
+    {
+      "path": "drivers/kernelsu/hook/lsm_hooks.c",
+      "sha256": "0e61070aee06170d71f8595196eea36ec2951abe4d5d21314efa1aadfd21b590"
+    },
+    {
+      "path": "drivers/kernelsu/hook/setuid_hook.c",
+      "sha256": "0478530241f31ed48768ec3c8d57051ae5820fadead4ce409b854b38cf618ff1"
+    },
+    {
+      "path": "drivers/kernelsu/policy/app_profile.c",
+      "sha256": "97c88f56711e02ba66576579e8ceaf90998d960a4b242ea1474b4dd1d163ac13"
+    },
+    {
+      "path": "drivers/kernelsu/runtime/boot_event.c",
+      "sha256": "df285f7bfe87f012ae1c74a33cc4ed94395f30df23a61cbb24e0ace68ca78c6d"
+    },
+    {
+      "path": "drivers/kernelsu/selinux/selinux.c",
+      "sha256": "47bf8fd42090708e95274fd099c7ec10ec6cd29ba29192dd993617f1eb21a98d"
+    },
+    {
+      "path": "drivers/kernelsu/selinux/selinux.h",
+      "sha256": "196c225349b9bf16e19174352fc5184117a4a663946c7f091f4a925b4254be8e"
+    },
+    {
+      "path": "drivers/kernelsu/supercall/supercall.c",
+      "sha256": "5d6d939032743a53b49cddd5962ddcf246c86ec7c4b0bb14d0a35c482312e870"
+    },
+    {
+      "path": "fs/Makefile",
+      "sha256": "89b3bd3303867c7816981109b38501f65ae4f4dedc72424cfa8f2b78cd94a8c4"
+    },
+    {
+      "path": "fs/namei.c",
+      "sha256": "509e2d3d6ffcbf500d51bfbf242b1cc752bfa6f3c4c35a8c928f4fb4e63859dd"
+    },
+    {
+      "path": "fs/namespace.c",
+      "sha256": "1828ffd75e740ac4f9c8526897dbafd84c05a916bf4a53119f3dc911458627ee"
+    },
+    {
+      "path": "fs/notify/fdinfo.c",
+      "sha256": "2ff25e732711d7c852150fc1d7602b8b89b95775db88f31878ca713b9302834d"
+    },
+    {
+      "path": "fs/proc/base.c",
+      "sha256": "425e4507ea5fc201adad58e724fc7b4b00d14c382e31acd3173723b832f61d24"
+    },
+    {
+      "path": "fs/proc/cmdline.c",
+      "sha256": "a736c9bda46344eee401d183dfdc0b798390d8070a57dc97b10440c0d48af925"
+    },
+    {
+      "path": "fs/proc/fd.c",
+      "sha256": "833a6605b736ed5125aa92ce56160670f2a4f5dcc1c5d8e7ad76ee47f89ee7c9"
+    },
+    {
+      "path": "fs/proc/task_mmu.c",
+      "sha256": "72d9047fc59051e4fb89d4c29109791eeabf3564d8885b6a01bc6b836aaa2471"
+    },
+    {
+      "path": "fs/proc_namespace.c",
+      "sha256": "bb973fe9adb301e64818e9b3651dd5fbb0f49dc3c0e06a317d208841eedca737"
+    },
+    {
+      "path": "fs/readdir.c",
+      "sha256": "d48962572cb987d4b992c1e1e2e0b953402103998f76467c43218347be896f20"
+    },
+    {
+      "path": "fs/stat.c",
+      "sha256": "649acc3ceb7e27fffa61e300c0e5f3b7b7295d4643904e3d7608ab2dfd45b09f"
+    },
+    {
+      "path": "fs/statfs.c",
+      "sha256": "457f4819cf36720c9c94b495ad227ad1b281abb9afc43f42e80a092b9ca4aac5"
+    },
+    {
+      "path": "fs/super.c",
+      "sha256": "4d44d4dca025b9481aededbbfb323fb3d50128db3d9f40ea7cf0ebeb69bbe859"
+    },
+    {
+      "path": "fs/susfs.c",
+      "sha256": "86296758a4c121a44664f6f71928ae0dc5787e022baa4df933c18660c1121d43",
+      "canonical_sha256": "5521aa600f6df698e1d5e31df72e3557a36d33c161bd65dcafe5788fb56a7fa7"
+    },
+    {
+      "path": "include/linux/ksu_hook.h",
+      "sha256": "e94230aed8785a64bd3d29bbf220d99fd61d293a097568e6220c27c3baf7ede0"
+    },
+    {
+      "path": "include/linux/susfs.h",
+      "sha256": "fafff787b8856bd37a6736c2f0bbc5a57fd1f36232be267936f892fb57bc5120",
+      "canonical_sha256": "fafff787b8856bd37a6736c2f0bbc5a57fd1f36232be267936f892fb57bc5120"
+    },
+    {
+      "path": "include/linux/susfs_def.h",
+      "sha256": "a4b4e4c9e32f1830239a9d7db7bd9707209a42bdf4a4cb4c1aeebe837dce8938",
+      "canonical_sha256": "db7f98dcf8119a4eb5c45c05205b6c1065766047d6f803b0e86f3d14b1a251f0"
+    },
+    {
+      "path": "kernel/configs/susfs.config",
+      "sha256": "b183b0d38e4c63db66014650da1a0eda58414ac7798d679725b267798f291e76"
+    },
+    {
+      "path": "kernel/kallsyms.c",
+      "sha256": "1df0624f52ea4cf84bd26aad30091e6ba9473ba908b2d0273495030c36ca11f7"
+    },
+    {
+      "path": "kernel/reboot.c",
+      "sha256": "794e9e64fb1dad83b07de80a6848f5ecff9ab49fafdf1797fb132618a67ee392"
+    },
+    {
+      "path": "kernel/sys.c",
+      "sha256": "fd91fa7e79de3c5c81e6fe3b91655896a922bcfcceb2191baeeb367d57809177"
+    },
+    {
+      "path": "mm/memory.c",
+      "sha256": "be1ca6cf750e76650ca92079428cc46cdf7e47c004d0cb2ebdd36c133c138e01"
+    },
+    {
+      "path": "scripts/build-kyoto-ksu.sh",
+      "sha256": "c685534a80a8ab1c75d7c01ddf007204be649a4a9294c1326d36a47197c518b5"
+    },
+    {
+      "path": "scripts/check-kyoto-susfs-source.py",
+      "sha256": "9dc05683b150496a72fa35e888a63cfbf9abf4a2f96092694c0d3f195d7100ee"
+    },
+    {
+      "path": "security/selinux/avc.c",
+      "sha256": "9ea79ea196b2a148fb6452b41d0c5097925eb61033dc4bc8560d93fa9c0c21f1"
+    }
+  ]
+}

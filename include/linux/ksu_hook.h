@@ -27,6 +27,9 @@ void ksu_handle_init_rc_stat(struct file *file, loff_t *size);
 int ksu_handle_sys_reboot(int magic1, int magic2, unsigned int cmd,
 			void __user **arg);
 int ksu_handle_slow_avc_audit(u32 *tsid);
+#ifdef CONFIG_KSU_SUSFS
+int ksu_susfs_handle_setresuid(uid_t ruid, uid_t euid, uid_t suid);
+#endif
 #endif
 
 #endif /* _LINUX_KSU_HOOK_H */

@@ -58,7 +58,7 @@ static int ksu_inode_rename(struct inode *old_dir, struct dentry *old_dentry,
 		return 0;
 	}
 
-	// Use d_name.name instead of the dangerous d_iname 
+	// Use d_name.name instead of the dangerous d_iname
 	// which can cause OOPS when the dentry is in an inconsistent state during rename
 	if (strcmp(new_dentry->d_name.name, "packages.list")) {
 		return 0;
@@ -102,9 +102,15 @@ static int ksu_inode_rename(struct inode *old_dir, struct dentry *old_dentry,
 static int ksu_task_fix_setuid(struct cred *new, const struct cred *old,
 			       int flags)
 {
+#ifdef CONFIG_KSU_SUSFS
+	/* The validated setresuid syscall adapter owns specialization in SUSFS
+	 * mode. Keep the remaining Next LSM hooks, without double processing. */
+	return 0;
+#else
 	kuid_t new_uid = new->uid;
 
 	return ksu_handle_setresuid(old->uid.val, new_uid.val);
+#endif
 }
 
 #ifndef DEVPTS_SUPER_MAGIC

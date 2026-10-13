@@ -3,6 +3,10 @@
 #include <linux/namei.h>
 #include <linux/printk.h>
 
+#ifdef CONFIG_KSU_SUSFS
+#include <linux/susfs.h>
+#endif
+
 #include "feature/selinux_hide.h"
 
 #include "policy/allowlist.h"
@@ -71,4 +75,7 @@ void on_boot_completed(void)
     track_throne(true);
     ksu_selinux_hide_drop_backup_if_unused();
     ksu_avc_spoof_late_init();
+#ifdef CONFIG_KSU_SUSFS
+    susfs_start_sdcard_monitor_fn();
+#endif
 }

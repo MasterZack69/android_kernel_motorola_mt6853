@@ -1,3 +1,7 @@
+> Historical Next-only build record. This branch adds SUSFS v2.3.0 after that
+> build. **No build or device validation of this SUSFS branch has been run.**
+> See SUSFS-VALIDATION.md for the limited, source-only checks.
+
 # Kyoto KernelSU-Next full-build validation
 
 **PASS: complete standalone vendor-config build, exit status 0.**

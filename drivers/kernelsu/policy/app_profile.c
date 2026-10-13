@@ -3,6 +3,9 @@
 #include "linux/kallsyms.h"
 #include <linux/capability.h>
 #include <linux/cred.h>
+#ifdef CONFIG_KSU_SUSFS
+#include <linux/susfs_def.h>
+#endif
 #include <linux/sched.h>
 #include <linux/sched/user.h>
 #include <linux/sched/signal.h>
@@ -221,6 +224,11 @@ int escape_with_root_profile(void)
     setup_selinux(profile->selinux_domain, cred);
 
     commit_creds(cred);
+#ifdef CONFIG_KSU_SUSFS
+    susfs_clear_current_proc_no_su();
+    susfs_clear_current_proc_umounted();
+    susfs_clear_current_proc_umounted_for_zygote_next();
+#endif
 
     disable_seccomp();
 

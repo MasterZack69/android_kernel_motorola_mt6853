@@ -21,7 +21,7 @@
       "path": "Kconfig",
       "upstream_path": "kernel/Kconfig",
       "upstream_sha256": "1712198b939aa9cdec0907ddf3e18647034b5361dd31f070f6c18acd3edd7b99",
-      "sha256": "149530610d802363667ae4bb54604f166ae0db0d1d0c91a5b08b6dac0668ac27",
+      "sha256": "747d9d362a88732af7f94348de32276c9a51fbb59a181e65a421fced0cc21685",
       "modified": true
     },
     {
@@ -56,8 +56,8 @@
       "path": "core/init.c",
       "upstream_path": "kernel/core/init.c",
       "upstream_sha256": "744439154a0472b3b163deb473fede363a14f2ec8b25d68b3c4f420173d29214",
-      "sha256": "744439154a0472b3b163deb473fede363a14f2ec8b25d68b3c4f420173d29214",
-      "modified": false
+      "sha256": "3606f9139b184ade26ed6d55baf84efe687ab81f033e7904f9dcf7ba6cd2f6fb",
+      "modified": true
     },
     {
       "path": "extras.c",
@@ -112,7 +112,7 @@
       "path": "feature/sucompat.c",
       "upstream_path": "kernel/feature/sucompat.c",
       "upstream_sha256": "0b8e0eaee8c22e93880a3ad14734d3f4b78e96f111f2cdfa831367f15630385e",
-      "sha256": "5f31d01b7cc534d9cdd269261a42c097b64b58210e4312720c815063cb56b1a8",
+      "sha256": "ff883e7c907cb4f5ccc8b0b08ec3d76a5b19ef74e3db0fe69fb5bd989975942c",
       "modified": true
     },
     {
@@ -154,8 +154,8 @@
       "path": "hook/lsm_hooks.c",
       "upstream_path": "kernel/hook/lsm_hooks.c",
       "upstream_sha256": "cd45638098e9fbd5f1ab24d80439e948471ddfd4c7adbfc18bb0a9d9e30daf67",
-      "sha256": "cd45638098e9fbd5f1ab24d80439e948471ddfd4c7adbfc18bb0a9d9e30daf67",
-      "modified": false
+      "sha256": "0e61070aee06170d71f8595196eea36ec2951abe4d5d21314efa1aadfd21b590",
+      "modified": true
     },
     {
       "path": "hook/patch_memory.c",
@@ -175,7 +175,7 @@
       "path": "hook/setuid_hook.c",
       "upstream_path": "kernel/hook/setuid_hook.c",
       "upstream_sha256": "e00be937f6001d1fcbb113ab6bd63394452f06eb13ec1873aebe1da1588e05e5",
-      "sha256": "f79597c403e9de8dd81ee119acfc3799a1d62b234ea40f7dec2b35f4e9b48cc8",
+      "sha256": "0478530241f31ed48768ec3c8d57051ae5820fadead4ce409b854b38cf618ff1",
       "modified": true
     },
     {
@@ -413,8 +413,8 @@
       "path": "policy/app_profile.c",
       "upstream_path": "kernel/policy/app_profile.c",
       "upstream_sha256": "7ab68cd2d5e15cac7a039b61d5560406df5d64b9d6ddd60de92e5410b0f1382f",
-      "sha256": "7ab68cd2d5e15cac7a039b61d5560406df5d64b9d6ddd60de92e5410b0f1382f",
-      "modified": false
+      "sha256": "97c88f56711e02ba66576579e8ceaf90998d960a4b242ea1474b4dd1d163ac13",
+      "modified": true
     },
     {
       "path": "policy/app_profile.h",
@@ -441,8 +441,8 @@
       "path": "runtime/boot_event.c",
       "upstream_path": "kernel/runtime/boot_event.c",
       "upstream_sha256": "1b639161a84770401d09b1b45879b99d10efb770c62033e46ec28dc0201ada89",
-      "sha256": "1b639161a84770401d09b1b45879b99d10efb770c62033e46ec28dc0201ada89",
-      "modified": false
+      "sha256": "df285f7bfe87f012ae1c74a33cc4ed94395f30df23a61cbb24e0ace68ca78c6d",
+      "modified": true
     },
     {
       "path": "runtime/ksud.h",
@@ -483,15 +483,15 @@
       "path": "selinux/selinux.c",
       "upstream_path": "kernel/selinux/selinux.c",
       "upstream_sha256": "9101c0198a937ef91182a45a8f799e8049e616604f174c8e7b7ee49450eb1604",
-      "sha256": "185786c48add580d1e1d1269e511ad9e6b56e5e6c88a80c4893c1264892d2496",
+      "sha256": "47bf8fd42090708e95274fd099c7ec10ec6cd29ba29192dd993617f1eb21a98d",
       "modified": true
     },
     {
       "path": "selinux/selinux.h",
       "upstream_path": "kernel/selinux/selinux.h",
       "upstream_sha256": "ff6439ba5a56cb58ef859fe35bda2fa223935f7f5bfc902aadfcc1ffb7a982cf",
-      "sha256": "ff6439ba5a56cb58ef859fe35bda2fa223935f7f5bfc902aadfcc1ffb7a982cf",
-      "modified": false
+      "sha256": "196c225349b9bf16e19174352fc5184117a4a663946c7f091f4a925b4254be8e",
+      "modified": true
     },
     {
       "path": "selinux/sepolicy.c",
@@ -567,8 +567,8 @@
       "path": "supercall/supercall.c",
       "upstream_path": "kernel/supercall/supercall.c",
       "upstream_sha256": "f89543d9ca1cd4fce1fc77380af42d104cf873483eb242141a27f0303d49bd45",
-      "sha256": "f89543d9ca1cd4fce1fc77380af42d104cf873483eb242141a27f0303d49bd45",
-      "modified": false
+      "sha256": "5d6d939032743a53b49cddd5962ddcf246c86ec7c4b0bb14d0a35c482312e870",
+      "modified": true
     },
     {
       "path": "supercall/supercall.h",
@@ -577,5 +577,6 @@
       "sha256": "27ee3497a8fdbf117fe05aa56a764d84bcdea7bfc6a7dc68a3f4c8191f6ad9fa",
       "modified": false
     }
-  ]
+  ],
+  "local_integration": "Kyoto manual hooks plus SUSFS v2.3.0; source-only, not built"
 }

@@ -6,6 +6,10 @@
 #include <linux/sched.h>
 #include <linux/workqueue.h>
 
+#ifdef CONFIG_KSU_SUSFS
+#include <linux/susfs.h>
+#endif
+
 #include "policy/allowlist.h"
 #include "policy/app_profile.h"
 #include "policy/feature.h"
@@ -119,6 +123,9 @@ int __init kernelsu_init(void)
         return -ENOSYS;
     }
 
+#ifdef CONFIG_KSU_SUSFS
+	susfs_init();
+#endif
 	ksu_feature_init();
 
 	ksu_sulog_init();
